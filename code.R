@@ -14,3 +14,6 @@ filter(murders, rank <= 5)
 #Use select to show only the state name, the rate and the rank
 my_states <- filter(murders, (region == "Northeast" | region == "West") & rate < 10)
 select(my_states, state, rate)
+
+murders %>% ggplot() + geom_point(aes(population/10^6, rate), size=2) +
+  geom_text(aes(population/10^6, rate, label=abb), nudge_x=1.5)
